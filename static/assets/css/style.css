@@ -142,7 +142,7 @@ section .card p {
 }
 .output .card img {
   width: 100%;
-  height: auto;
+  height: 400px;
 }
 .output .card p {
   text-align: justify;
