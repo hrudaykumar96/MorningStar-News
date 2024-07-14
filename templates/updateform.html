@@ -1,0 +1,49 @@
+  <div class="update-form">
+    <form class="container updatedform" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="post-title" class="form-label">Title:</label>
+        <input type="text" class="form-control update-title" name="news_title" value="" required>
+        <small class="text-danger" id="updatetitleerror"></small>
+      </div>
+      <div class="mb-3">
+        <label for="post-description" class="form-label">Description:</label>
+        <textarea class="form-control update-description" name="updatenews_description" rows="3" required></textarea>
+        <small class="text-danger" id="updatedescriptionerror"></small>
+      </div>
+      {% if article.image %}
+      <div class="mb-3">
+        <p>Current Image:</p>
+        <img src="" alt="Current Image" class="img-thumbnail custom-image-size">
+      </div>
+      {% endif %}
+      <div class="mb-3">
+        <label for="inputGroupFile02" class="form-label">Upload Image:</label>
+        <input type="file" class="form-control updatedimage"  name="news_image">
+        <small class="text-danger" id="updatefileerror"></small>
+      </div>
+      <div class="mb-3">
+        <select
+          class="form-select form-select-sm text-capitalize update-category"
+          aria-label="Small select example"
+          name="category_type"
+        >
+          <option selected>Select News Category</option>
+          {% for category in category_name %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+        <small class="text-danger" id="updatecategoryerror"></small>
+      </div>
+      <div class="mb-3 form-check checkmark">
+        <input type="checkbox" class="form-check-input checkmark-updated">
+        <label class="form-check-label" for="exampleCheck1">Disclaimer: The news articles and content displayed on this website are sourced from various publishers and third-party websites. The ownership and rights of the content belong to their respective creators or organizations. We do not endorse any specific viewpoint or information presented.
+        </label>
+        <small class="text-danger" id="checkmarkerrorupdated"></small>
+      </div>
+      <div class="mb-3 text-end">
+        <button type="submit" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-danger" onclick="updateformclose()">Cancel</button>
+      </div>
+    </form>
+  </div>

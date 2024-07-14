@@ -1,0 +1,58 @@
+<div class="post-headlines">
+    <form
+      action="{% url 'post_headline' %}"
+      class="container headline-form"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label
+        ><span class="text-danger">*</span>
+        <input
+          type="text"
+          class="form-control headline-title"
+          placeholder="News Title"
+          required
+          name="headlines_title"
+        />
+        <small class="text-danger" id="headlinetitleerror"></small>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label
+        ><span class="text-danger">*</span>
+        <textarea
+          class="form-control headline-description"
+          placeholder="News Description"
+          required
+          name="headlines_description"
+        ></textarea>
+        <small class="text-danger" id="headlinedescriptionerror"></small>
+      </div>
+      <div class="mb-3">
+        <div class="input-group">
+          <input
+            type="file"
+            class="form-control headlineimage"
+            name="headlines_image"
+          />
+          <label class="input-group-text" for="inputGroupFile02">Upload</label
+          ><span class="text-danger" required>*</span>
+        </div>
+        <small class="text-danger" id="headlinefileerror"></small>
+      </div>
+      <div class="mb-3">
+      <div class="mb-3 form-check checkmark">
+        <input type="checkbox" class="form-check-input headline-checkmark">
+        <label class="form-check-label" for="exampleCheck1">Disclaimer: The news articles and content displayed on this website are sourced from various publishers and third-party websites. The ownership and rights of the content belong to their respective creators or organizations. We do not endorse any specific viewpoint or information presented.
+        </label>
+        <small class="text-danger" id="headlinecheckmarkerror"></small>
+      </div>
+      <div class="mb-3 text-end">
+        <input type="submit" class="btn btn-success" value="Post" />
+        <button type="button" class="btn btn-danger" onclick="postheadlineformclose()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>

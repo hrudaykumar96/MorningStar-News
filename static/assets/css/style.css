@@ -1,0 +1,308 @@
+/* Importing Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap");
+
+/* Global reset and default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Remove underline from links */
+a {
+  text-decoration: none;
+  color: #fff;
+}
+body {
+  background-color: rgb(217, 217, 217);
+}
+/* Login section styling */
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    45deg,
+    rgb(232, 189, 189) 0 50%,
+    rgb(95, 95, 101) 50% 100%
+  );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Login form styling */
+.login-form {
+  background-color: #fff;
+  padding: 1rem;
+  width: 380px;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px #161616;
+  background: linear-gradient(to top right, #ff6f61, #20b2aa);
+}
+
+/* Center align heading in login form */
+.login-form h3 {
+  text-align: center;
+}
+
+/* Forgot password section styling */
+.forgot-pwd {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Underline on hover for forgot password link */
+.forgot-pwd a:hover {
+  text-decoration: underline;
+}
+
+/* Signup overlay styling */
+.signup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.news {
+  min-height: 100vh;
+  width: 100%;
+}
+.news header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news .navbar-brand img {
+  height: 30px;
+  width: 30px;
+}
+
+section {
+  margin: 1rem;
+  min-height: 100vh;
+}
+section .card {
+  box-shadow: 0 0 10px #fff;
+  transition: all 1s;
+}
+section .card:hover {
+  box-shadow: 0 0 10px #050505;
+}
+section .card img {
+  height: 15rem;
+  width: 100%;
+  object-fit: contain;
+}
+
+section .card h5 {
+  overflow: hidden;
+  text-align: justify;
+}
+section .card p {
+  text-align: justify;
+}
+.more-info {
+  margin: 1rem;
+}
+.more-info .card {
+  border: none;
+  box-shadow: 0 0 10px #fff;
+}
+.more-info .card img {
+  object-fit: fill;
+}
+.output {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+.output .card {
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+.output .card img {
+  width: 100%;
+  height: auto;
+}
+.output .card p {
+  text-align: justify;
+}
+.output .card-body{
+  flex: 1;
+  overflow-y: auto;
+}
+.output-body {
+  text-align: justify;
+  width: 100%;
+}
+footer {
+  background-color: #161616;
+  color: #fff;
+  width: 100%;
+}
+footer .icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem 0 1rem 0;
+  font-size: 1.5rem;
+}
+footer .icons i {
+  color: #fff;
+}
+footer .copyright {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+footer .icons i:hover {
+  color: #787272;
+}
+.post-form,
+.update-form,
+.post-headlines,
+.update-headline, .context {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.delete-popup,
+.category,
+.delete-headline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.post-form form,
+.update-form form,
+.post-headlines form,
+.update-headline form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.category form,
+.context form{
+  background-color: #fff;
+  width: 30%;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.delete-popup form,
+.delete-headline form {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 80%;
+}
+.post-form .checkmark label,
+.update-form .checkmark label,
+.post-headlines label,
+.update-headline label, .context-checkmark label {
+  font-size: 0.8rem;
+  text-align: justify;
+}
+.messages {
+  text-align: center;
+}
+.news .messages {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+  text-align: center;
+  width: 100%;
+}
+.custom-image-size,
+.custom-image-headlinesize {
+  max-width: 200px;
+  height: auto;
+}
+.menu li {
+  cursor: pointer;
+}
+section .card {
+  height: 500px;
+  width: 100%;
+}
+
+section .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+section .carousel img {
+  height: 500px;
+}
+.carousel h5,
+.carousel p {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+section .carousel img {
+  filter: brightness(70%);
+}
+.note-editor.note-frame .note-editing-area .note-editable {
+  background-color: #ffffff;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.note-editor-fullscreen .note-frame .note-editing-area .note-editable {
+  background-color: #ffffff;
+}
+.note-modal-backdrop {
+  top: 50%;
+  left: 50%;
+  height: 0;
+  background-color: transparent;
+  position: fixed;
+}
+.note-modal-content {
+  padding: 1rem;
+  border: none;
+}
+.note-modal-header {
+  outline: none !important;
+  border: none !important;
+  border-bottom: 1px solid #ededef !important;
+}

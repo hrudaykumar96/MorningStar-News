@@ -1,0 +1,22 @@
+<div class="delete-popup">
+  <div class="card" style="width: 25rem">
+    <div class="card-body">
+      <h5 class="card-title">Delete Post</h5>
+      <p class="card-text">Are you sure you want to delete this post?</p>
+      <form
+        class="deleteForm"
+        method="post"
+      >
+        {% csrf_token %}
+        <input type="submit" class="btn btn-success" value="Delete" />
+        <button
+          type="button"
+          class="btn btn-danger"
+          onclick="deletepopupclose()"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

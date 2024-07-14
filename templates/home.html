@@ -1,0 +1,115 @@
+{% include "header.html" %}
+{% if articles_latest %}
+{% include "marquee.html" %}
+{% endif %}
+<title>{% block title %}News{% endblock %}</title>
+
+<section>
+  {% if headlines %}
+ <h3>Latest News</h3>
+ <div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-inner">
+    {% for headline in headlines%}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <a href="{% url 'headline' slug=headline.slug %}"><img src="{{headline.image.url}}" class="d-block w-100" alt="..."></a>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{headline.title|truncatechars:120 | safe}}</h5>
+        {% if user.is_superuser %}
+           <button
+            class="btn btn-success"
+            data-slug="{{headline.slug}}"
+            data-title="{{headline.title}}"
+            data-description="{{headline.description}}"
+            data-image="{{headline.image}}"
+            onclick="headlineupdateopen(this)"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+
+          <button
+            type="button"
+            onclick="deleteheadlineopen('{{headline.slug}}')"
+            class="btn btn-danger"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+
+          {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+  {% endif %}
+  {% if articles_latest %} {% if category.name %}
+  <h3 class="text-capitalize">{{ category }}</h3>
+  {% else %}
+  <h3 class="text-capitalize">All Categories</h3>
+  {% endif %}
+  <div class="row">
+    {% for article in articles_latest %}
+    <div class="col-sm-4">
+      <div class="card mb-3">
+        <a href="{% url 'full_article' article_slug=article.slug %}">
+          <img src="{{ article.image.url }}" class="card-img-top" alt="..." />
+        </a>
+        <div class="card-body">
+          {% if user.is_superuser %}
+          <button
+            class="btn btn-success"
+            data-id="{{article.category_list.id}}"
+            data-slug="{{article.slug}}"
+            data-title="{{article.title}}"
+            data-description="{{article.description}}"
+            data-image="{{article.image}}"
+            onclick="updateformopen(this)"
+          >
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+
+          <button
+            type="button"
+            onclick="deletepopupopen('{{article.slug}}')"
+            class="btn btn-danger"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+
+          {% endif %}
+          <h5 class="card-title">{{ article.title | truncatechars:50 | safe }}</h5>
+          <small class="text-muted">{{ article.publish_date }}</small>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="col-sm-12">
+    <p class="text-center text-danger">No Articles Found</p>
+  </div>
+  {% endif %}
+  {% include "postheadlines.html" %}
+</section>
+
+
+{% include "deletepopup.html" %} 
+{% include "headlinedeletepopup.html" %}
+{% for article in headlines %} 
+{% include "headlineformupdate.html" %}
+{% endfor %} 
+{% for article in articles_latest %} 
+{% include "updateform.html" %}
+{% endfor %} 
+{% include "postform.html" %}
+{% include "category.html" %} 
+{% include "adminsignup.html" %}
+{% include "footer.html" %}

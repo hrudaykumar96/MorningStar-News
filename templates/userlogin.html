@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title of the webpage -->
+    <title>Login | Signup</title>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets/images/logo.jpg' %}"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <!-- Login form -->
+    <div class="login container-fluid">
+      <form
+        action=""
+        class="login-form container"
+        method="post"
+        id="form-login"
+      >
+        {% csrf_token %}
+        <!-- Title for login section -->
+        <h3>Login Here</h3>
+        <div class="messages">
+          {% if messages %}
+          <div class="row">
+            {% for message in messages %}
+            <div
+              {%
+              if
+              message.tags
+              %}
+              class="alert {{ message.tags }} alert-dismissible fade show text-center"
+              role="alert"
+              {%
+              endif
+              %}
+            >
+              {{ message }}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        <!-- Email input -->
+        <input type="hidden" name="action" value="login" />
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label
+          ><span class="text-danger">*</span>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email Address"
+            required
+            id="login-email"
+            name="loginemail"
+          />
+          <small class="text-danger" id="loginemailerror"></small>
+        </div>
+
+        <!-- Password input -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label
+          ><span class="text-danger">*</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            required
+            id="login-password"
+            name="loginpassword"
+          />
+          <small class="text-danger" id="loginpassworderror"></small>
+        </div>
+
+        <!-- Login button and Forgot Password link -->
+        <div class="mb-3 forgot-pwd">
+          <input type="submit" value="Login" class="btn btn-primary" />
+          <a href="{% url 'changepassword' %}">Forgot Password</a>
+        </div>
+
+        <!-- Create Account button -->
+        <div class="mb-3">
+          <button
+            type="button"
+            class="btn btn-success w-100"
+            onclick="createaccount()"
+          >
+            Create Account
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Signup form (initially hidden) -->
+    <div class="signup container-fluid" id="signup">
+      <form
+        action=""
+        class="login-form container"
+        id="form-signup"
+        method="post"
+      >
+        {% csrf_token %}
+        <!-- Title for signup section -->
+        <h3>Signup Here</h3>
+        <input type="hidden" name="action" value="signup" />
+        <!-- Name input -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Name:</label
+          ><span class="text-danger">*</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Full Name"
+            required
+            id="signup-name"
+            name="signupname"
+          />
+          <small class="text-danger" id="signupnameerror"></small>
+        </div>
+
+        <!-- Email input -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label
+          ><span class="text-danger">*</span>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email Address"
+            required
+            id="signup-email"
+            name="signupemail"
+          />
+          <small class="text-danger" id="signupemailerror"></small>
+        </div>
+
+        <!-- Password input -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label
+          ><span class="text-danger">*</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            required
+            id="signup-password"
+            name="signuppassword"
+          />
+          <small class="text-danger" id="signuppassworderror"></small>
+        </div>
+
+        <!-- Confirm Password input -->
+        <div class="mb-3">
+          <label for="cnfpassword" class="form-label">Confirm Password:</label
+          ><span class="text-danger">*</span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Confirm Password"
+            required
+            id="signup-cnfpassword"
+          />
+          <small class="text-danger" id="signupcnfpassworderror"></small>
+        </div>
+
+        <!-- Signup button and Cancel button -->
+        <div class="mb-3 forgot-pwd">
+          <input type="submit" value="Signup" class="btn btn-success" />
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="closesignupform()"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- JavaScript files -->
+    <script src="{% static 'assets/script/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/script/script.js' %}"></script>
+  </body>
+</html>

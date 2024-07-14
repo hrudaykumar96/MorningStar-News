@@ -1,0 +1,77 @@
+<!-- post form -->
+
+<div class="post-form">
+  <form
+    action="{% url 'postnews' %}"
+    class="container"
+    id="form-post"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label
+      ><span class="text-danger">*</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="News Title"
+        id="post-title"
+        required
+        name="news_title"
+      />
+      <small class="text-danger" id="posttitleerror"></small>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label
+      ><span class="text-danger">*</span>
+      <textarea
+        class="form-control"
+        placeholder="News Description"
+        id="post-description"
+        required
+        name="postnews_description"
+      ></textarea>
+      <small class="text-danger" id="postdescriptionerror"></small>
+    </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <input
+          type="file"
+          class="form-control"
+          id="inputGroupFile02"
+          name="news_image"
+        />
+        <label class="input-group-text" for="inputGroupFile02">Upload</label
+        ><span class="text-danger" required>*</span>
+      </div>
+      <small class="text-danger" id="postfileerror"></small>
+    </div>
+    <div class="mb-3">
+      <select
+        class="form-select form-select-sm text-capitalize"
+        aria-label="Small select example"
+        id="category"
+        name="category_type"
+      >
+        <option selected>Select News Category</option>
+        {% for category in category_name %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+      </select>
+      <small class="text-danger" id="categoryerror"></small>
+    </div>
+    <div class="mb-3 form-check checkmark">
+      <input type="checkbox" class="form-check-input" id="checkmark-post">
+      <label class="form-check-label" for="exampleCheck1">Disclaimer: The news articles and content displayed on this website are sourced from various publishers and third-party websites. The ownership and rights of the content belong to their respective creators or organizations. We do not endorse any specific viewpoint or information presented.
+      </label>
+      <small class="text-danger" id="checkmarkerror"></small>
+    </div>
+    <div class="mb-3 text-end">
+      <input type="submit" class="btn btn-success" value="Post" />
+      <button type="button" class="btn btn-danger" onclick="postformclose()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

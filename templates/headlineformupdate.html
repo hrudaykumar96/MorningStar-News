@@ -1,0 +1,36 @@
+<div class="update-headline">
+    <form class="container updateformheadline" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="post-title" class="form-label">Title:</label>
+        <input type="text" class="form-control update-headlinetitle" name="headlinenews_title" value="" required>
+        <small class="text-danger" id="updateheadlinetitleerror"></small>
+      </div>
+      <div class="mb-3">
+        <label for="post-description" class="form-label">Description:</label>
+        <textarea class="form-control update-headlinedescription" name="updateheadlinenews_description" rows="3" required></textarea>
+        <small class="text-danger" id="updateheadlinedescriptionerror"></small>
+      </div>
+      {% if article.image %}
+      <div class="mb-3">
+        <p>Current Image:</p>
+        <img src="" alt="Current Image" class="img-thumbnail custom-image-headlinesize">
+      </div>
+      {% endif %}
+      <div class="mb-3">
+        <label for="inputGroupFile02" class="form-label">Upload Image:</label>
+        <input type="file" class="form-control headline-image"  name="headlinenews_image">
+        <small class="text-danger" id="updateheadlinefileerror"></small>
+      </div>
+      <div class="mb-3 form-check checkmark">
+        <input type="checkbox" class="form-check-input checkmark-headlineupdated">
+        <label class="form-check-label" for="exampleCheck1">Disclaimer: The news articles and content displayed on this website are sourced from various publishers and third-party websites. The ownership and rights of the content belong to their respective creators or organizations. We do not endorse any specific viewpoint or information presented.
+        </label>
+        <small class="text-danger" id="headlinecheckmarkerrorupdated"></small>
+      </div>
+      <div class="mb-3 text-end">
+        <button type="submit" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-danger" onclick="headlineupdateclose()">Cancel</button>
+      </div>
+    </form>
+  </div>

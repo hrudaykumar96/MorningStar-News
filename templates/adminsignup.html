@@ -1,0 +1,83 @@
+<div class="signup container-fluid" id="signup">
+    <form
+      action="{% url 'adminuser' %}"
+      class="login-form container"
+      id="form-signup"
+      method="post"
+    >
+      {% csrf_token %}
+      <!-- Title for signup section -->
+      <h3>Signup Here</h3>
+      <input type="hidden" name="action" value="adminsignup" />
+      <!-- Name input -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label
+        ><span class="text-danger">*</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Full Name"
+          required
+          id="signup-name"
+          name="adminname"
+        />
+        <small class="text-danger" id="signupnameerror"></small>
+      </div>
+
+      <!-- Email input -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label
+        ><span class="text-danger">*</span>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email Address"
+          required
+          id="signup-email"
+          name="adminemail"
+        />
+        <small class="text-danger" id="signupemailerror"></small>
+      </div>
+
+      <!-- Password input -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label
+        ><span class="text-danger">*</span>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          required
+          id="signup-password"
+          name="adminpassword"
+        />
+        <small class="text-danger" id="signuppassworderror"></small>
+      </div>
+
+      <!-- Confirm Password input -->
+      <div class="mb-3">
+        <label for="cnfpassword" class="form-label">Confirm Password:</label
+        ><span class="text-danger">*</span>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Confirm Password"
+          required
+          id="signup-cnfpassword"
+        />
+        <small class="text-danger" id="signupcnfpassworderror"></small>
+      </div>
+
+      <!-- Signup button and Cancel button -->
+      <div class="mb-3 forgot-pwd">
+        <input type="submit" value="Signup" class="btn btn-success" />
+        <button
+          type="button"
+          class="btn btn-danger"
+          onclick="closesignupform()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
